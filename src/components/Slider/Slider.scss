@@ -1,0 +1,35 @@
+.slider {
+    // width: 100%;
+    // height: 30vh;
+    // color: white;
+    // background: black;
+    // text-align: center;
+    // overflow: hidden;
+    // position: relative;
+    overflow: hidden;
+    position: relative;
+
+    &-track {
+        // display: flex;
+        // flex-wrap: nowrap;
+        // align-items: center;
+        display: flex;
+        height: 100%;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+    }
+}
+
+.slide {
+//     width: 100%;
+//     height: 100%;
+//     border: 1px solid white;
+    flex: 1 0 100%;
+    position: relative;
+    background-color: black;
+    color: white;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
