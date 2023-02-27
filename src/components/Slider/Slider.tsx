@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './Slider.scss';
 import Arrows from '../Arrows/Arrows';
 
@@ -13,16 +14,38 @@ interface ISlider {
 }
 
 const Slider = (props: ISlider) => {
+    const [slide, setSlide] = useState(0);
+
+    const slidesCount = props.children.length
+
+    // const slideTo = (current: number) => {
+
+    // }
+
+    const changeSlide = (direction = 1) => {
+        let current;
+        if (slide + direction > slidesCount) {
+            current = 0;
+        } else if (slide + direction < 0) {
+            current = slidesCount - 1
+        } else {
+            current = (slide + direction) % slidesCount
+        }
+
+        // slideTo(current);
+        setSlide(current);
+    }
+
     return (
         <div className="slider">
-            <div className="slider-track">
+            <div className="slider-track" style={{ transform: `translateX(-${slide * 100}%)` }}>
                 {props.children.map((slide, i) => (
-                    <div className="slide" key={i} tabIndex={i}>
+                    <div className="slide" key={i}>
                         {slide}
                     </div>
                 ))}
             </div>
-            <Arrows />
+            <Arrows changeSlide={changeSlide}/>
         </div>
     );
 }

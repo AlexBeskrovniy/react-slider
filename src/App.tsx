@@ -11,7 +11,7 @@ const sliderConfig = {
 const items: JSX.Element[] = [];
 
 for (let i = 0; i < 5; i++) {
-  items.push(<h1>Slide {i}</h1>)
+  items.push(<h1 key={i}>Slide {i}</h1>)
 }
 
 function App() {

@@ -10,10 +10,32 @@
 .slide-next {
     width: 2rem;
     height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     background: green;
     cursor: pointer;
     &:hover {
         opacity: .64;
+    }
+}
+
+.icon {
+    width: 1rem;
+    height: 1rem;
+    border-top: 4px solid black;
+    border-left: 4px solid black; 
+}
+
+.slide-prev {
+    .icon {
+        transform: rotate(-45deg);
+    }
+}
+
+.slide-next {
+    .icon {
+        transform: rotate(135deg);
     }
 }
