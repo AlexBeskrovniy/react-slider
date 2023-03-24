@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import './Slider.scss';
 import Arrows from '../Arrows/Arrows';
 
@@ -16,25 +16,25 @@ interface ISlider {
 
 const Slider = ({ config, slides }: ISlider) => {
     const [current, setCurrent] = useState(0);
-    const [loop, setLoop] = useState(config.loop);
+    // const [loop, setLoop] = useState(config.loop);
+    
 
     const slidesCount = slides.length
     const firstIndexEl = slides.at(0)
-    const lastIndexEl = slides.at(-1); 
-
+    const lastIndexEl = slides.at(-1);
     //Not implemented
-    const handleLoop = (direction: number) => {
-        switch (direction) {
-            case 1:
-                const first: any = slides.shift();
-                slides.push(first)
-                break;
-            case -1:
-                console.log('back');
-                console.log(direction);
-                break;
-        }
-    }
+    // const handleLoop = (direction: number) => {
+    //     switch (direction) {
+    //         case 1:
+    //             const first: any = slides.shift();
+    //             slides.push(first)
+    //             break;
+    //         case -1:
+    //             console.log('back');
+    //             console.log(direction);
+    //             break;
+    //     }
+    // }
 
     const changeSlide = (direction: number) => {
         let slide;
@@ -48,7 +48,7 @@ const Slider = ({ config, slides }: ISlider) => {
 
         setCurrent(slide);
 
-        loop && handleLoop(direction);
+        // loop && handleLoop(direction);
     }
 
     return (
@@ -60,7 +60,7 @@ const Slider = ({ config, slides }: ISlider) => {
                     </div>
                 ))}
             </div>
-            <Arrows changeSlide={changeSlide}/>
+            {config.arrows && <Arrows current={current} slidesCount={slidesCount - 1} changeSlide={changeSlide} />}
         </div>
     );
 }
