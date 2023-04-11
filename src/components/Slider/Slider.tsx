@@ -16,25 +16,11 @@ interface ISlider {
 
 const Slider = ({ config, slides }: ISlider) => {
     const [current, setCurrent] = useState(0);
-    // const [loop, setLoop] = useState(config.loop);
     
 
     const slidesCount = slides.length
     const firstIndexEl = slides.at(0)
     const lastIndexEl = slides.at(-1);
-    //Not implemented
-    // const handleLoop = (direction: number) => {
-    //     switch (direction) {
-    //         case 1:
-    //             const first: any = slides.shift();
-    //             slides.push(first)
-    //             break;
-    //         case -1:
-    //             console.log('back');
-    //             console.log(direction);
-    //             break;
-    //     }
-    // }
 
     const changeSlide = (direction: number) => {
         let slide;
@@ -47,8 +33,6 @@ const Slider = ({ config, slides }: ISlider) => {
         }
 
         setCurrent(slide);
-
-        // loop && handleLoop(direction);
     }
 
     return (
