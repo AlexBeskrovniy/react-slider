@@ -21,7 +21,7 @@
     &:hover {
         opacity: .64;
     }
-    &[disabled] {
+    &:disabled {
         opacity: .64;
         cursor: default;
         pointer-events: none;

@@ -9,11 +9,14 @@ const sliderConfig = {
     dots: false,
 }
 
-const slides: JSX.Element[] = [];
 const sources: string[] = ['images/arch.jpg', 'images/behemoth.jpg', 'images/children_of_bodom.jpg', 'images/cob.jpg', 'images/metallica.jpg'];
 
-sources.map(src => {
-  slides.push(<ImageWrapper key={src} src={src} />);
+const slides: JSX.Element[] = sources.map(src => {
+    return (
+      <div className="slide" key={src}>
+        <ImageWrapper key={src} src={src} />
+      </div>
+    );
 });
 
 function App() {

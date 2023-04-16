@@ -1,12 +1,12 @@
 import './Arrows.scss';
 
-interface IArrows {
+interface ArrowsProps {
     current: number
     slidesCount: number
     changeSlide: (direction: number) => void
 }
 
-const Arrows = ({ current, slidesCount, changeSlide }: IArrows) => {
+const Arrows = ({ current, slidesCount, changeSlide }: ArrowsProps) => {
     return (
         <div className="arrows">
             <button className="slide-prev" onClick={() => changeSlide(-1)} disabled={current === 0}>

@@ -2,19 +2,19 @@ import { useState } from 'react';
 import './Slider.scss';
 import Arrows from '../Arrows/Arrows';
 
-interface IConfig {
+interface SliderConfig {
     loop: boolean;
     autoplay: boolean;
     arrows: boolean;
     dots: boolean;
 }
 
-interface ISlider {
+interface SliderProps {
     slides: JSX.Element[];
-    config: IConfig;
+    config: SliderConfig;
 }
 
-const Slider = ({ config, slides }: ISlider) => {
+const Slider = ({ config, slides }: SliderProps) => {
     const [current, setCurrent] = useState(0);
     
 
@@ -23,26 +23,24 @@ const Slider = ({ config, slides }: ISlider) => {
     const lastIndexEl = slides.at(-1);
 
     const changeSlide = (direction: number) => {
-        let slide;
-        if (current + direction > slidesCount) {
-            slide = 0;
-        } else if (current + direction < 0) {
-            slide = slidesCount - 1
-        } else {
-            slide = (current + direction) % slidesCount
-        }
+        setCurrent((current + direction) % slidesCount);
+        //Maybe need for loop implementation
+        // let slide;
+        // if (current + direction > slidesCount) {
+        //     slide = 0;
+        // } else if (current + direction < 0) {
+        //     slide = slidesCount - 1
+        // } else {
+        //     slide = (current + direction) % slidesCount
+        // }
 
-        setCurrent(slide);
+        // setCurrent(slide);
     }
 
     return (
         <div className="slider">
             <div className="slider-track" style={{ transform: `translateX(-${current * 100}%)` }}>
-                {slides.map((slide, i) => (
-                    <div className="slide" key={i}>
-                        {slide}
-                    </div>
-                ))}
+                {slides}
             </div>
             {config.arrows && <Arrows current={current} slidesCount={slidesCount - 1} changeSlide={changeSlide} />}
         </div>
